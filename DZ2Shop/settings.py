@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-*jrwo8aq&b!q-ysgdt*%y@9z=#)sh$f^qy%@n^wevwj41=96&#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1','localhost']
 
 
 # Application definition
@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'Dz2shop1.urls'
+ROOT_URLCONF = 'DZ2Shop.urls'
 
 TEMPLATES = [
     {
