@@ -11,7 +11,8 @@ class Client(models.Model):
     client_reg_date = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return f'Client:{self.name}, e-mail:{self.email}, phone:{self.phone}, addr:{self.address}'
+        # return f'Client:{self.name}, e-mail:{self.email}, phone:{self.phone}, addr:{self.address}'
+        return self.name
 
 
 class Product(models.Model):
@@ -31,6 +32,11 @@ class Order(models.Model):
     sum_order = models.FloatField()
     order_date = models.DateField(auto_now_add=True)
 
+    def calculate_total_amount(self):
+        total = sum(product.prod_price * product.prod_quant for product in self.products.all())
+        self.sum_order = total
+        self.save()
+
     def __str__(self):
-        return self.products
+        return f'Order {self.id} by {self.client.name}'
 
