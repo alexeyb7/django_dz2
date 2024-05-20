@@ -9,8 +9,9 @@ def index(request):
     return render(request, 'myshop/index.html')
 
 
-def client_orders(request, name):
-    client = Client.objects.get(pk=name)
+# def client_orders(request, name):
+def client_orders(request, client_id):
+    client = Client.objects.get(client_id=client_id)
 
     # За последние 7 дней
     last_7_days = timezone.now() - timedelta(days=7)
@@ -27,7 +28,7 @@ def client_orders(request, name):
     client_orders_last_365_days = Product.objects.filter(order__client=client,
                                                          order__order_date__gte=last_365_days).distinct()
 
-    return render(request, 'hw3_app/client_orders.html', {
+    return render(request, 'myshop/client_orders.html', {
         'client_orders_last_7_days': client_orders_last_7_days,
         'client_orders_last_30_days': client_orders_last_30_days,
         'client_orders_last_365_days': client_orders_last_365_days,
