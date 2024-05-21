@@ -10,8 +10,9 @@ def index(request):
 
 
 # def client_orders(request, name):
-def client_orders(request, name):
-    client = Client.objects.get()
+def client_orders(request):
+
+    client = 2
 
     # За последние 7 дней
     last_7_days = timezone.now() - timedelta(days=7)
